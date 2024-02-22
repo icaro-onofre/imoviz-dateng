@@ -1,19 +1,6 @@
 import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 
-class Imovel():
-    def __init__(self,preco,metragem,endereco):
-        self.endereco=endereco
-
-    endereco
-    preco 
-    metragem
-
-    def _endereco(self):
-        return endereco
-    def _endereco_set(self,endereco):
-        endereco=endereco
-
 
 class VivaRealSpider(CrawlSpider):
     name = "viva_real"
@@ -28,7 +15,6 @@ class VivaRealSpider(CrawlSpider):
             yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
-        imovel = Imovel()
-        for imoveis in response.xpath("/html/body/main/div[2]/div[1]/section/div[2]/div[1]/div[19]/div/article/a").getall():
-            yield {"metragem":metragem}
+        for imoveis in response.xpath("/html/body/main/div[2]/div[1]/section/div[2]/div[1]/div[19]/div/article/a"):
+            print(imoveis.css(".property-card__price").get())
         pass
