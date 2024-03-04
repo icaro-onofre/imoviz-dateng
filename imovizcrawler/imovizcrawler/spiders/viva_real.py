@@ -17,6 +17,7 @@ class VivaRealSpider(CrawlSpider):
     def parse(self, response):
         i = 1
         for imoveis in range(20):
-            yield {"imoveis":response.xpath(f"/html/body/main/div[2]/div[1]/section/div[2]/div[1]/div[%i]/div/article/a"%i).css(".property-card__price").getall()}
+            yield {"imoveis_preco":response.xpath(f"/html/body/main/div[2]/div[1]/section/div[2]/div[1]/div[%i]/div/article/a"%i).css(".property-card__price").getall()}
+            yield {"imoveis_endereco":response.xpath(f"/html/body/main/div[2]/div[1]/section/div[2]/div[1]/div[%i]/div/article/a/div/h2/span[2]/span[1]"%i).css(".property-card__address").getall()}
             i+=1
         pass
