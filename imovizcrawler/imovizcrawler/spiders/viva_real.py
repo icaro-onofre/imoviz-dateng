@@ -15,6 +15,8 @@ class VivaRealSpider(CrawlSpider):
             yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
-        for imoveis in response.xpath("/html/body/main/div[2]/div[1]/section/div[2]/div[1]/div[19]/div/article/a"):
-            print(imoveis.css(".property-card__price").get())
+        i = 1
+        for imoveis in range(20):
+            yield {"imoveis":response.xpath(f"/html/body/main/div[2]/div[1]/section/div[2]/div[1]/div[%i]/div/article/a"%i).css(".property-card__price").getall()}
+            i+=1
         pass
