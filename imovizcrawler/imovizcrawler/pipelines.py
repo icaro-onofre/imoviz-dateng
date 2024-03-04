@@ -10,5 +10,7 @@ from itemadapter import ItemAdapter
 
 class ImovizcrawlerPipeline:
     def process_item(self, item, spider):
-        #print(preco)
+        scrapped = ItemAdapter(item)
+        print("Dentro do pipeline",scrapped.get("imoveis_preco"))
+        print("Dentro do pipeline",scrapped.get("imoveis_endereco"))
         return item
